@@ -35,17 +35,25 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.CircleOptions;
+import com.google.android.gms.maps.model.Circle;
 
 import scilea.ficct.uagrm.com.innovahack.R;
 import scilea.ficct.uagrm.com.innovahack.fragments.ProfileFragment;
 import scilea.ficct.uagrm.com.innovahack.utils.PermissionManager;
+import com.google.firebase.database.*;
+
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, LocationListener {
 
     private GoogleMap mMap;
     MarkerOptions mo;
+    MarkerOptions mo2;
     Marker marker;
     LocationManager locationManager;
+     DatabaseReference mDatabase;
+     CircleOptions co;
+     Circle mapC;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +65,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
-        mo = new MarkerOptions().position(new LatLng(0, 0)).title("Mi posición actual");
+        mo = new MarkerOptions().position(new LatLng(0,0)).title("Mi posición actual");
+
+        co = new CircleOptions();
+        co.radius(400);
+        co.fillColor(R.color.blue_50);
+        co.strokeWidth(4.0f);
+
+
         if (Build.VERSION.SDK_INT >= 23 && !isPermissionGranted()) {
             requestPermissions(PERMISSIONS, PERMISSION_ALL);
         } else requestLocation();
@@ -79,6 +94,34 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 finish();
             }
         });
+        cargarParadas();
+
+    }
+
+    private void cargarParadas() {
+// ...
+        mDatabase = FirebaseDatabase.getInstance().getReference("parada");
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot child : snapshot.getChildren()) {
+                    String lat = child.child("lat").getValue().toString();
+                    double lat2 = new Double(lat);
+                    String lng = child.child("long").getValue().toString();
+                    double lng2 = new Double(lng);
+                    LatLng coord = new LatLng(lat2,lng2);
+//                    Log.i("coordenada",coord.toString());
+                    mMap.addMarker(new MarkerOptions()
+                            .position(coord)
+                            .title(child.getKey()));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
 
@@ -94,16 +137,34 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
         marker = mMap.addMarker(mo);
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(mo.getPosition()));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(-17.783587, -63.182126), 14.0f));
+
+
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(mo.getPosition()));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mo.getPosition(), 14.0f));
+
+
     }
 
     @Override
     public void onLocationChanged(Location location) {
+
+        if(mapC!=null){
+            mapC.remove();
+        }
         LatLng myCoordinates = new LatLng(location.getLatitude(), location.getLongitude());
         marker.setPosition(myCoordinates);
         mMap.moveCamera(CameraUpdateFactory.newLatLng(myCoordinates));
+
+        //Crea circulo
+
+        co.center(myCoordinates);
+        mapC = mMap.addCircle(co);
+
+
+
+
     }
 
     @Override

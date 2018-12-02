@@ -1,0 +1,130 @@
+{
+  "project_info": {
+    "project_number": "1015134171372",
+    "firebase_url": "https://innovahack-224213.firebaseio.com",
+    "project_id": "innovahack-224213",
+    "storage_bucket": "innovahack-224213.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015134171372:android:e38af4b7db70b16f",
+        "android_client_info": {
+          "package_name": "com.example.nataliaoviedo.micros"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1015134171372-toanvr2fpmhrkg8160bnc6epn2i5om80.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nataliaoviedo.micros",
+            "certificate_hash": "0a8d7906d1fda331135bf32c73b351adb2b14f1f"
+          }
+        },
+        {
+          "client_id": "1015134171372-522kjlfn7p6euoubghtg441f99ch7e41.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANSS7Rv2Qp_YjbbteCsLZ8oJf-nMMDuv8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1015134171372-522kjlfn7p6euoubghtg441f99ch7e41.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015134171372:android:0a08424fcdcfc1ae",
+        "android_client_info": {
+          "package_name": "com.ficct.scilea.innovahack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1015134171372-3a0214knt88gj1qsgk747i3a0k3tb3vf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ficct.scilea.innovahack",
+            "certificate_hash": "0a8d7906d1fda331135bf32c73b351adb2b14f1f"
+          }
+        },
+        {
+          "client_id": "1015134171372-522kjlfn7p6euoubghtg441f99ch7e41.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANSS7Rv2Qp_YjbbteCsLZ8oJf-nMMDuv8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1015134171372-522kjlfn7p6euoubghtg441f99ch7e41.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015134171372:android:cbf56fe33127d3c2",
+        "android_client_info": {
+          "package_name": "scilea.ficct.uagrm.com.innovahack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1015134171372-522kjlfn7p6euoubghtg441f99ch7e41.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANSS7Rv2Qp_YjbbteCsLZ8oJf-nMMDuv8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
